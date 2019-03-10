@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,7 +26,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun countMe(countButton: View) {
-        val textView = findViewById<TextView>(R.id.textView)
         val curText = textView.text.toString()
 
         textView.text = (curText.toInt()+1).toString()
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     fun randomMe(randomButton: View) {
         val randomIntent = Intent(this, SecondActivity::class.java)
 
-        val curValue = findViewById<TextView>(R.id.textView).text.toString().toInt()
+        val curValue = textView.text.toString().toInt()
         randomIntent.putExtra(TOTAL_COUNT, curValue)
 
         startActivity(randomIntent)

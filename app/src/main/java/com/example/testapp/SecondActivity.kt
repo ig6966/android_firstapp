@@ -3,6 +3,7 @@ package com.example.testapp
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_second.*
 import java.util.*
 
 class SecondActivity : AppCompatActivity() {
@@ -19,13 +20,10 @@ class SecondActivity : AppCompatActivity() {
     }
 
     private fun showRandomNumber() {
-        val randomView = findViewById<TextView>(R.id.textview_random)
-        val headingView = findViewById<TextView>(R.id.textview_label)
-
         val count = intent.extras.getInt(TOTAL_COUNT)
         val random = Random()
 
-        randomView.text = if(count == 0) "0" else random.nextInt(count).toString()
-        headingView.text = getString(R.string.random_heading,count)
+        textviewRandom.text = if(count == 0) "0" else random.nextInt(count).toString()
+        textviewLabel.text = getString(R.string.random_heading, count)
     }
 }
