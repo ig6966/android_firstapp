@@ -1,5 +1,6 @@
 package com.example.testapp
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,6 +9,10 @@ import android.widget.TextView
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
+
+    private companion object {
+        val TOTAL_COUNT = "total_count"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,5 +29,14 @@ class MainActivity : AppCompatActivity() {
         val curText = textView.text.toString()
 
         textView.text = (curText.toInt()+1).toString()
+    }
+
+    fun randomMe(randomButton: View) {
+        val randomIntent = Intent(this, SecondActivity::class.java)
+
+        val curValue = findViewById<TextView>(R.id.textView).text.toString().toInt()
+        randomIntent.putExtra(TOTAL_COUNT, curValue)
+
+        startActivity(randomIntent)
     }
 }
